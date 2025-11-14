@@ -1,0 +1,47 @@
+vamos a implementar este programa en C++, tomando en cuenta estos criterios
+
+Ejercicio 1
+Conversor de Expresiones Infix a Postfix
+Se desea transformar una expresión infija (convencional) a su forma postfija (notación polaca inversa). Se usará una pila para operadores y se aplicará el algoritmo de Shunting Yard.
+
+Entrada esperada del usuario:
+𝐴 + 𝐵 ∗ (𝐶 − 𝐷)
+Salida esperada:
+𝐴 𝐵 𝐶 𝐷 − ∗ +
+
+https://onlinegdb.com/TNfvMc9hv
+
+
+Ejercicio 2
+Simulador de Equipaje en una Bodega de Avión
+Se desea simular el ingreso y retiro de maletas en un espacio lineal de bodega. Si una maleta que no está al final debe salir, se deben mover temporalmente las maletas que están por encima usando una pila auxiliar.
+Entrada esperada del usuario:
+    • agregar M01
+    • agregar M02
+    • agregar M03
+    • retirar M02
+    • mostrar
+Salida esperada:
+“Maleta M02 retirada con 1 maniobra.” “Estado actual: M01, M03”
+
+https://onlinegdb.com/CYl53Z1-8
+
+
+    1) Definición correcta de las estructuras de datos.
+    2) Implementación de funciones utilizando pilas y colas.
+    3) Codificación funcional del sistema en un IDE
+    4) Uso apropiado de estructuras repetitivas
+        4.1) Se aplican condicionales anidadas si el problema lo requiere
+    5) Entrega puntual del proyecto y cumplimiento de las instrucciones (Código en C++; Anexos con la codificación y compilación del programa)
+
+
+Navegación de historial web con lista doble
+Un navegador web desea implementar su historial de navegación. Cada nodo en la lista doble representa una página visitada con: URL, fecha y hora de visita.
+El sistema debe:
+a) Insertar cada nueva visita al final de la lista.
+b) Permitir al usuario desplazarse hacia adelante o atrás desde la página actual.
+c) Eliminar una URL específica del historial.
+d) Mostrar el historial completo en orden cronológico inverso (última a primera visita).
+e) Calcular el tiempo de ejecución de cada función y el tiempo total del programa.
+
+https://onlinegdb.com/4g1Wu_XwB

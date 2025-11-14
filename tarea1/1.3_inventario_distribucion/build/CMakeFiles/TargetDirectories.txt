@@ -1,0 +1,3 @@
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.3_inventario_distribucion/build/CMakeFiles/inventario.dir
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.3_inventario_distribucion/build/CMakeFiles/edit_cache.dir
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.3_inventario_distribucion/build/CMakeFiles/rebuild_cache.dir

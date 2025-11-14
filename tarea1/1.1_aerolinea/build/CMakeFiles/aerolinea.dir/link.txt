@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/aerolinea.dir/src/Airplane.cpp.o CMakeFiles/aerolinea.dir/src/Flight.cpp.o CMakeFiles/aerolinea.dir/src/FlightClass.cpp.o CMakeFiles/aerolinea.dir/src/Passenger.cpp.o CMakeFiles/aerolinea.dir/src/main.cpp.o -o aerolinea 

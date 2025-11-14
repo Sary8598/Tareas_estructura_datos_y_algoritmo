@@ -1,0 +1,3 @@
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.1_aerolinea/build/CMakeFiles/aerolinea.dir
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.1_aerolinea/build/CMakeFiles/edit_cache.dir
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.1_aerolinea/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,3 @@
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.2_sistema_de_gestión_de_reservas_hotelera/build/CMakeFiles/hotel_reservas.dir
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.2_sistema_de_gestión_de_reservas_hotelera/build/CMakeFiles/edit_cache.dir
+/home/bubacoder/projects/uapa_estructura_dato/tontita/tarea1/1.2_sistema_de_gestión_de_reservas_hotelera/build/CMakeFiles/rebuild_cache.dir

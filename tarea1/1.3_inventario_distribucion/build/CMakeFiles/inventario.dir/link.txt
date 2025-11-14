@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/inventario.dir/src/main.cpp.o CMakeFiles/inventario.dir/src/Almacen.cpp.o -o inventario 
