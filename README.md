@@ -6,36 +6,36 @@ Se han actualizado todos los proyectos para reemplazar `std::vector` por **arreg
 
 ## Criterios de Evaluación Cumplidos
 
-### 1) Definición correcta de las estructuras de datos ✅
+### 1) Definición correcta de las estructuras de datos 
 - **Arreglos unidimensionales**: `int umbral[15]`, `Equipo equipos[20]`
 - **Matrices bidimensionales**: `int stock[6][15]`, `double distancia[6][6]`
 - **Arreglos de objetos**: `std::unique_ptr<Passenger> passengers_[100]`
 
-### 2) Implementación de funciones para manipular arreglos y matrices ✅
+### 2) Implementación de funciones para manipular arreglos y matrices 
 - Funciones de inserción, búsqueda y ordenamiento
 - Manipulación directa de índices y contadores
 - Algoritmos manuales (burbuja, búsqueda lineal)
 
-### 3) Codificación funcional del sistema en un IDE ✅
+### 3) Codificación funcional del sistema en un IDE 
 - Código compilable en C++
 - Estructura modular con headers e implementaciones
 - CMakeLists.txt para compilación
 
-### 4) Uso apropiado de estructuras repetitivas ✅
+### 4) Uso apropiado de estructuras repetitivas 
 - Bucles `for` para recorrer arreglos y matrices
 - Bucles `while` para menús interactivos
 - **4.1) Condicionales anidadas**: Implementadas en algoritmos de redistribución y validaciones
 
-### 5) Manipulación efectiva de arreglos unidimensionales y bidimensionales ✅
+### 5) Manipulación efectiva de arreglos unidimensionales y bidimensionales 
 - **Unidimensionales**: Gestión de equipos, umbrales, pasajeros
 - **Bidimensionales**: Matrices de stock, distancias, capacidades por clase
 
-### 6) Desarrollo de funciones que trabajen directamente con arreglos y matrices estáticos ✅
+### 6) Desarrollo de funciones que trabajen directamente con arreglos y matrices estáticos 
 - Sin uso de contenedores dinámicos STL
 - Paso de arreglos por referencia/puntero
 - Gestión manual de tamaños y límites
 
-### 7) Entrega puntual del proyecto y cumplimiento de las instrucciones ✅
+### 7) Entrega puntual del proyecto y cumplimiento de las instrucciones 
 - **Código en C++**: Todos los archivos convertidos
 - **Estructuras estáticas**: Eliminados todos los vectores
 - **Funcionalidad preservada**: Todos los sistemas mantienen su funcionalidad
