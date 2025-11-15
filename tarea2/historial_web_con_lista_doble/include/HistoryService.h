@@ -10,6 +10,7 @@ struct ServiceTimes {
     long long removeTime = 0;
     long long getHistoryTime = 0;
     long long navigateTime = 0;
+    long long getCurrentTime = 0;
 };
 
 class HistoryService {

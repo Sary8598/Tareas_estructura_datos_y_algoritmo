@@ -33,6 +33,7 @@ ExecutionTimes HistoryController::getExecutionTimes() const {
         serviceTimes.insertTime,
         serviceTimes.removeTime,
         serviceTimes.getHistoryTime,
-        serviceTimes.navigateTime
+        serviceTimes.navigateTime,
+        serviceTimes.getCurrentTime
     };
 }

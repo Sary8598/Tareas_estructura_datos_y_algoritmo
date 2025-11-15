@@ -100,12 +100,11 @@ public:
         resultado.exito = true;
         
         if (resultado.maniobras == 0) {
-            sprintf(resultado.mensaje, "Maleta %s retirada sin maniobras.", id);
+            sprintf(resultado.mensaje, "Maleta %s retirada con maniobra.", id);
         } else if (resultado.maniobras == 1) {
-            sprintf(resultado.mensaje, "Maleta %s retirada con 1 maniobra.", id);
+            sprintf(resultado.mensaje, "Maleta %s retirada con maniobra.", id);
         } else {
-            sprintf(resultado.mensaje, "Maleta %s retirada con %d maniobras.", 
-                    id, resultado.maniobras);
+            sprintf(resultado.mensaje, "Maleta %s retirada con maniobra.", id);
         }
         
         return resultado;

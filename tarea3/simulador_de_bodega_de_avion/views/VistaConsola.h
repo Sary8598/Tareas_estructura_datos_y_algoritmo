@@ -20,37 +20,13 @@ private:
     }
     
     void mostrarMenu() const {
-        cout << "COMANDOS DISPONIBLES:" << endl;
+        cout << "\nOPCIONES DISPONIBLES:" << endl;
         cout << "----------------------------------------" << endl;
-        cout << "  agregar [ID]  - Agregar maleta a la bodega" << endl;
-        cout << "  retirar [ID]  - Retirar maleta de la bodega" << endl;
-        cout << "  mostrar       - Mostrar estado de la bodega" << endl;
-        cout << "  limpiar       - Vaciar toda la bodega" << endl;
-        cout << "  ayuda         - Mostrar esta ayuda" << endl;
-        cout << "  salir         - Salir del programa" << endl;
-        cout << "========================================" << endl;
-        cout << endl;
-    }
-    
-    void mostrarEjemplos() const {
-        cout << "EJEMPLOS DE USO:" << endl;
-        cout << "----------------------------------------" << endl;
-        cout << "1. Agregar maletas:" << endl;
-        cout << "   > agregar M01" << endl;
-        cout << "   > agregar M02" << endl;
-        cout << "   > agregar M03" << endl;
-        cout << endl;
-        cout << "2. Retirar maleta (con maniobras):" << endl;
-        cout << "   > retirar M02" << endl;
-        cout << "   Salida: Maleta M02 retirada con 1 maniobra." << endl;
-        cout << endl;
-        cout << "3. Mostrar estado:" << endl;
-        cout << "   > mostrar" << endl;
-        cout << "   Estado actual: M01, M03" << endl;
-        cout << endl;
-        cout << "4. Retirar maleta del tope (sin maniobras):" << endl;
-        cout << "   > retirar M03" << endl;
-        cout << "   Salida: Maleta M03 retirada sin maniobras." << endl;
+        cout << "  1 - Agregar maleta a la bodega" << endl;
+        cout << "  2 - Retirar maleta con maniobra" << endl;
+        cout << "  3 - Mostrar estado de la bodega" << endl;
+        cout << "  4 - Vaciar toda la bodega" << endl;
+        cout << "  0 - Salir del programa" << endl;
         cout << "========================================" << endl;
         cout << endl;
     }
@@ -119,87 +95,56 @@ private:
         cout << "✓ " << respuesta.mensaje << endl;
     }
     
-    void procesarComando(BodegaControlador& controlador, const char* comando, const char* parametro) const {
-        if (strcmp(comando, "agregar") == 0) {
-            if (strlen(parametro) > 0) {
-                procesarComandoAgregar(controlador, parametro);
-            } else {
-                cout << "✗ Error: Debe especificar el ID de la maleta." << endl;
-            }
-        }
-        else if (strcmp(comando, "retirar") == 0) {
-            if (strlen(parametro) > 0) {
-                procesarComandoRetirar(controlador, parametro);
-            } else {
-                cout << "✗ Error: Debe especificar el ID de la maleta." << endl;
-            }
-        }
-        else if (strcmp(comando, "mostrar") == 0) {
-            procesarComandoMostrar(controlador);
-        }
-        else if (strcmp(comando, "limpiar") == 0) {
-            procesarComandoLimpiar(controlador);
-        }
-        else if (strcmp(comando, "ayuda") == 0) {
-            mostrarMenu();
-            mostrarEjemplos();
-        }
-        else {
-            cout << "✗ Comando no reconocido. Escriba 'ayuda' para ver los comandos disponibles." << endl;
+    void procesarOpcion(BodegaControlador& controlador, int opcion) const {
+        char identificador[50];
+        
+        switch (opcion) {
+            case 1:
+                cout << "Ingrese ID de la maleta: ";
+                cin.getline(identificador, 50);
+                procesarComandoAgregar(controlador, identificador);
+                break;
+            case 2:
+                cout << "Ingrese ID de la maleta a retirar: ";
+                cin.getline(identificador, 50);
+                procesarComandoRetirar(controlador, identificador);
+                break;
+            case 3:
+                procesarComandoMostrar(controlador);
+                break;
+            case 4:
+                procesarComandoLimpiar(controlador);
+                break;
+            default:
+                cout << "✗ Opcion no valida. Presione 5 para ver las opciones." << endl;
+                break;
         }
     }
     
-    void leerComando(char comando[], char parametro[]) const {
-        char linea[MAX_COMANDO];
-        cout << endl << "> ";
-        cin.getline(linea, MAX_COMANDO);
-        
-        // Separar comando y parametro
-        int i = 0;
-        int j = 0;
-        
-        // Saltar espacios iniciales
-        while (linea[i] == ' ' || linea[i] == '\t') {
-            i++;
-        }
-        
-        // Leer comando
-        while (linea[i] != ' ' && linea[i] != '\t' && linea[i] != '\0') {
-            comando[j++] = linea[i++];
-        }
-        comando[j] = '\0';
-        
-        // Saltar espacios
-        while (linea[i] == ' ' || linea[i] == '\t') {
-            i++;
-        }
-        
-        // Leer parametro
-        j = 0;
-        while (linea[i] != '\0') {
-            parametro[j++] = linea[i++];
-        }
-        parametro[j] = '\0';
+    int leerOpcion() const {
+        int opcion;
+        cout << endl << "Seleccione una opcion (0-4): ";
+        cin >> opcion;
+        cin.ignore();
+        return opcion;
     }
     
 public:
     void ejecutar() {
         BodegaControlador controlador;
-        char comando[MAX_COMANDO];
-        char parametro[MAX_COMANDO];
+        int opcion;
         bool continuar = true;
         
         mostrarBienvenida();
-        mostrarMenu();
-        mostrarEjemplos();
         
         while (continuar) {
-            leerComando(comando, parametro);
+            mostrarMenu();
+            opcion = leerOpcion();
             
-            if (strcmp(comando, "salir") == 0) {
+            if (opcion == 0) {
                 continuar = false;
-            } else if (strlen(comando) > 0) {
-                procesarComando(controlador, comando, parametro);
+            } else {
+                procesarOpcion(controlador, opcion);
             }
         }
         

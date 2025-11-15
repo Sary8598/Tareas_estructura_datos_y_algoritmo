@@ -21,15 +21,15 @@ private:
     }
     
     void mostrarMenu() const {
-        cout << "COMANDOS DISPONIBLES:" << endl;
+        cout << "MENU PRINCIPAL:" << endl;
         cout << "----------------------------------------" << endl;
-        cout << "  agregar           - Agregar nuevo empleado" << endl;
-        cout << "  calcular          - Calcular todos los salarios netos" << endl;
-        cout << "  filtrar [monto]   - Mostrar empleados con salario neto > monto" << endl;
-        cout << "  filtrar           - Mostrar empleados con salario neto > RD$50,000" << endl;
-        cout << "  limpiar           - Borrar todos los empleados" << endl;
-        cout << "  ayuda             - Mostrar esta ayuda" << endl;
-        cout << "  salir             - Salir del programa" << endl;
+        cout << "  1. Agregar nuevo empleado" << endl;
+        cout << "  2. Calcular todos los salarios netos" << endl;
+        cout << "  3. Filtrar empleados (salario > RD$50,000)" << endl;
+        cout << "  4. Filtrar empleados (monto personalizado)" << endl;
+        cout << "  5. Limpiar todos los empleados" << endl;
+        cout << "  6. Mostrar ayuda" << endl;
+        cout << "  7. Salir del programa" << endl;
         cout << "========================================" << endl;
         cout << endl;
     }
@@ -66,7 +66,6 @@ private:
         cout << endl;
         cout << "Ingrese los datos del empleado:" << endl;
         cout << "Nombre: ";
-        cin.ignore();
         cin.getline(nombre, 100);
         
         cout << "Salario base (RD$): ";
@@ -74,6 +73,7 @@ private:
         
         cout << "Porcentaje de descuento (%): ";
         cin >> porcentajeDescuento;
+        cin.ignore(); // Clear buffer after numeric input
     }
     
     void procesarAgregar(NominaControlador& controlador) const {
@@ -179,87 +179,67 @@ private:
         mostrarTiempo(respuesta.tiempoEjecucion);
     }
     
-    void procesarComando(NominaControlador& controlador, const char* comando, const char* parametro) const {
-        if (strcmp(comando, "agregar") == 0) {
-            procesarAgregar(controlador);
-        }
-        else if (strcmp(comando, "calcular") == 0) {
-            procesarCalcular(controlador);
-        }
-        else if (strcmp(comando, "filtrar") == 0) {
-            double umbral = UMBRAL_DEFECTO;
-            
-            if (strlen(parametro) > 0) {
-                umbral = atof(parametro);
-                if (umbral <= 0) {
-                    umbral = UMBRAL_DEFECTO;
-                }
+    void procesarOpcion(NominaControlador& controlador, int opcion) const {
+        switch (opcion) {
+            case 1:
+                procesarAgregar(controlador);
+                break;
+            case 2:
+                procesarCalcular(controlador);
+                break;
+            case 3:
+                procesarFiltrar(controlador, UMBRAL_DEFECTO);
+                break;
+            case 4: {
+                cout << "Ingrese el monto minimo: RD$";
+                double umbral;
+                cin >> umbral;
+                cin.ignore();
+                if (umbral <= 0) umbral = UMBRAL_DEFECTO;
+                procesarFiltrar(controlador, umbral);
+                break;
             }
-            
-            procesarFiltrar(controlador, umbral);
-        }
-        else if (strcmp(comando, "limpiar") == 0) {
-            procesarLimpiar(controlador);
-        }
-        else if (strcmp(comando, "ayuda") == 0) {
-            mostrarMenu();
-            mostrarEjemplos();
-        }
-        else {
-            cout << "✗ Comando no reconocido. Escriba 'ayuda' para ver los comandos." << endl;
+            case 5:
+                procesarLimpiar(controlador);
+                break;
+            case 6:
+                mostrarMenu();
+                mostrarEjemplos();
+                break;
+            default:
+                cout << "✗ Opcion invalida. Seleccione del 1 al 7." << endl;
+                break;
         }
     }
     
-    void leerComando(char comando[], char parametro[]) const {
-        char linea[200];
-        cout << endl << "> ";
-        cin.getline(linea, 200);
-        
-        int i = 0;
-        int j = 0;
-        
-        // Saltar espacios iniciales
-        while (linea[i] == ' ' || linea[i] == '\t') {
-            i++;
-        }
-        
-        // Leer comando
-        while (linea[i] != ' ' && linea[i] != '\t' && linea[i] != '\0') {
-            comando[j++] = linea[i++];
-        }
-        comando[j] = '\0';
-        
-        // Saltar espacios
-        while (linea[i] == ' ' || linea[i] == '\t') {
-            i++;
-        }
-        
-        // Leer parametro
-        j = 0;
-        while (linea[i] != '\0') {
-            parametro[j++] = linea[i++];
-        }
-        parametro[j] = '\0';
+    int leerOpcion() const {
+        int opcion;
+        cout << endl << "Seleccione una opcion (1-7): ";
+        cin >> opcion;
+        cin.ignore(); // Clear buffer
+        return opcion;
     }
     
 public:
     void ejecutar() {
         NominaControlador controlador;
-        char comando[100];
-        char parametro[100];
+        int opcion;
         bool continuar = true;
         
         mostrarBienvenida();
         mostrarMenu();
-        mostrarEjemplos();
         
         while (continuar) {
-            leerComando(comando, parametro);
+            opcion = leerOpcion();
             
-            if (strcmp(comando, "salir") == 0) {
+            if (opcion == 7) {
                 continuar = false;
-            } else if (strlen(comando) > 0) {
-                procesarComando(controlador, comando, parametro);
+            } else {
+                procesarOpcion(controlador, opcion);
+                if (continuar) {
+                    cout << endl;
+                    mostrarMenu();
+                }
             }
         }
         

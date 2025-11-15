@@ -33,42 +33,6 @@ private:
         cout << "   Infix:   A + B" << endl;
         cout << "   Postfix: A B +" << endl;
         cout << endl;
-        cout << "2. Con multiplicacion (mayor precedencia):" << endl;
-        cout << "   Infix:   A + B * C" << endl;
-        cout << "   Postfix: A B C * +" << endl;
-        cout << endl;
-        cout << "3. Con parentesis:" << endl;
-        cout << "   Infix:   (A + B) * C" << endl;
-        cout << "   Postfix: A B + C *" << endl;
-        cout << endl;
-        cout << "4. Expresion compleja:" << endl;
-        cout << "   Infix:   A + B * (C - D)" << endl;
-        cout << "   Postfix: A B C D - * +" << endl;
-        cout << endl;
-        cout << "5. Con exponenciacion:" << endl;
-        cout << "   Infix:   A ^ B * C" << endl;
-        cout << "   Postfix: A B ^ C *" << endl;
-        cout << endl;
-        cout << "6. Multiples operadores:" << endl;
-        cout << "   Infix:   A * B + C * D" << endl;
-        cout << "   Postfix: A B * C D * +" << endl;
-        cout << endl;
-        cout << "7. Parentesis anidados:" << endl;
-        cout << "   Infix:   ((A + B) * C) - D" << endl;
-        cout << "   Postfix: A B + C * D -" << endl;
-        cout << endl;
-        cout << "8. Division y resta:" << endl;
-        cout << "   Infix:   A / B - C + D" << endl;
-        cout << "   Postfix: A B / C - D +" << endl;
-        cout << endl;
-        cout << "9. Expresion larga:" << endl;
-        cout << "   Infix:   A + B * C - D / E" << endl;
-        cout << "   Postfix: A B C * + D E / -" << endl;
-        cout << endl;
-        cout << "10. Con numeros:" << endl;
-        cout << "   Infix:   3 + 4 * 2 / (1 - 5)" << endl;
-        cout << "   Postfix: 3 4 2 * 1 5 - / +" << endl;
-        cout << endl;
     }
     
     void leerExpresion(char expresion[]) const {

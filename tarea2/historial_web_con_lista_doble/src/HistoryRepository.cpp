@@ -21,7 +21,7 @@ void HistoryRepository::insertPage(const std::string& url, const std::string& da
     }
     
     auto end = std::chrono::high_resolution_clock::now();
-    insertTime = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    insertTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
 }
 
 bool HistoryRepository::removePage(const std::string& url) {
@@ -55,7 +55,7 @@ bool HistoryRepository::removePage(const std::string& url) {
     }
     
     auto end = std::chrono::high_resolution_clock::now();
-    removeTime = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    removeTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     
     return found;
 }
@@ -73,13 +73,20 @@ PageArray HistoryRepository::getHistoryReverse() {
     }
     
     auto end = std::chrono::high_resolution_clock::now();
-    getHistoryTime = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    getHistoryTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     
     return history;
 }
 
 WebPage* HistoryRepository::getCurrentPage() {
-    return current;
+    auto start = std::chrono::high_resolution_clock::now();
+    
+    WebPage* result = current;
+    
+    auto end = std::chrono::high_resolution_clock::now();
+    getCurrentTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    
+    return result;
 }
 
 WebPage* HistoryRepository::navigateForward() {
@@ -90,7 +97,7 @@ WebPage* HistoryRepository::navigateForward() {
     }
     
     auto end = std::chrono::high_resolution_clock::now();
-    navigateTime = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    navigateTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     
     return current;
 }
@@ -103,7 +110,7 @@ WebPage* HistoryRepository::navigateBackward() {
     }
     
     auto end = std::chrono::high_resolution_clock::now();
-    navigateTime = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    navigateTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     
     return current;
 }
@@ -122,6 +129,7 @@ HistoryRepository::RepoTimes HistoryRepository::getExecutionTimes() const {
         insertTime.count(),
         removeTime.count(),
         getHistoryTime.count(),
-        navigateTime.count()
+        navigateTime.count(),
+        getCurrentTime.count()
     };
 }

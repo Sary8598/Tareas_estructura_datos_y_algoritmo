@@ -60,8 +60,9 @@ ServiceTimes HistoryService::getExecutionTimes() const {
             repoTimes.insertTime,
             repoTimes.removeTime,
             repoTimes.getHistoryTime,
-            repoTimes.navigateTime
+            repoTimes.navigateTime,
+            repoTimes.getCurrentTime
         };
     }
-    return {0, 0, 0, 0};
+    return {0, 0, 0, 0, 0};
 }

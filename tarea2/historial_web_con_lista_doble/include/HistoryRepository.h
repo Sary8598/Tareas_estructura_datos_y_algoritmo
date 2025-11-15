@@ -22,16 +22,18 @@ public:
     WebPage* navigateBackward() override;
     void clear() override;
     
-    std::chrono::microseconds insertTime;
-    std::chrono::microseconds removeTime;
-    std::chrono::microseconds getHistoryTime;
-    std::chrono::microseconds navigateTime;
+    std::chrono::nanoseconds insertTime;
+    std::chrono::nanoseconds removeTime;
+    std::chrono::nanoseconds getHistoryTime;
+    std::chrono::nanoseconds navigateTime;
+    std::chrono::nanoseconds getCurrentTime;
     
     struct RepoTimes {
         long long insertTime;
         long long removeTime;
         long long getHistoryTime;
         long long navigateTime;
+        long long getCurrentTime;
     };
     
     RepoTimes getExecutionTimes() const;
